@@ -25,22 +25,29 @@ public class BNV extends AppCompatActivity {
         fragmentManager= getSupportFragmentManager();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        fragments[2] = new Tab3Fragment();
-        transaction.add(R.id.container, fragments[2]);
+        fragments[0] = new Tab3Fragment();
+        transaction.add(R.id.container, fragments[0]);
         transaction.commit();
 
         bnv=findViewById(R.id.bnv);
-        bnv.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onNavigationItemReselected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 FragmentTransaction tran = fragmentManager.beginTransaction();
                 if (fragments[0]!=null) tran.hide(fragments[0]);
                 if(fragments[1]!=null) tran.hide(fragments[1]);
                 if(fragments[2]!=null) tran.hide(fragments[2]);
+                if(fragments[3]!=null) tran.hide(fragments[3]);
+                if(fragments[4]!=null) tran.hide(fragments[4]);
 
                 switch (item.getItemId()){
                     case R.id.bnv_tab1:
+                       //  if(fragments[0]==null){
+                       //     fragments[0]= new Tab2Fragment();
+                      //      tran.add(R.id.container, fragments[0]);
+                      //  }
                         tran.show(fragments[0]);
+
                         break;
 
                     case R.id.bnv_tab2:
@@ -50,6 +57,7 @@ public class BNV extends AppCompatActivity {
                         }
                         tran.show(fragments[1]);
                         break;
+
                     case R.id.bnv_tab3:
                         if(fragments[2]==null){
                             fragments[2]= new Tab3Fragment();
@@ -57,16 +65,18 @@ public class BNV extends AppCompatActivity {
                         }
                         tran.show(fragments[2]);
                         break;
+
                     case R.id.bnv_tab4:
                         if(fragments[3]==null){
-                            fragments[3]= new Tab3Fragment();
+                            fragments[3]= new Tab4Fragment();
                             tran.add(R.id.container, fragments[3]);
                         }
                         tran.show(fragments[3]);
                         break;
+
                     case R.id.bnv_tab5:
                         if(fragments[4]==null){
-                            fragments[4]= new Tab3Fragment();
+                            fragments[4]= new Tab5Fragment();
                             tran.add(R.id.container, fragments[4]);
                         }
                         tran.show(fragments[4]);
@@ -75,10 +85,9 @@ public class BNV extends AppCompatActivity {
                 }
 
                 tran.commit();
-
-
-
+                return true;
             }
         });
+
     }
 }

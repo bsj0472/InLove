@@ -13,9 +13,9 @@ public class Tab1PagerAdapter extends FragmentPagerAdapter {
     public Tab1PagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
 
-        pages[0] = new Tab1_MapsFragment();
-        pages[1] = new Tab1_Weather();
-        pages[2] = new Tab1_movie();
+        pages[0] = new Tab1_MapFragment();
+        pages[1] = new Tab1_WeatherFragment();
+        pages[2] = new Tab1_MovieFragment();
 
     }
 
